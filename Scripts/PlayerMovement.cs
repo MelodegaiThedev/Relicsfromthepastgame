@@ -228,3 +228,4 @@ public class PlayerMovement : MonoBehaviour
         return Vector3.ProjectOnPlane(moveDirection, slopeHit.normal).normalized;
     }
 }
+//Hello this project is from Melodegai
