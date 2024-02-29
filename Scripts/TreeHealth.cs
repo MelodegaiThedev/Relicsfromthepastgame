@@ -15,14 +15,17 @@ public class TreeHealth : MonoBehaviour
             {
                 int quantityToDrop = Random.Range(item.minQuantityToDrop ,item.maxQuantityToDrop);
                 
-                if(quantityToDrop== 0)
+                if(quantityToDrop == 0)
+                {
                     return; 
+                } 
                 
                 Item droppedItem = Instantiate(item.ItemToDrop, transform.position, Quaternion.identity).GetComponent<Item>();
                 droppedItem.currentQuantity = quantityToDrop;
 
                 player.GetComponent<Inventory>().addItemToInventory(droppedItem); 
             }
+            Destroy(gameObject);
         }
     }
 }
