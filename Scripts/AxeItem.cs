@@ -1,24 +1,39 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 public class AxeItem : MonoBehaviour
-{ 
-    [SerializeField] private int axeDamage =5;
+{
+    [SerializeField] private int axeDamage = 5;
+    [SerializeField] private float hitCooldown = 1f; // Adjust this in the Inspector
+
+    private bool canHit = true;
+
     private void Update()
     {
-        if(Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && canHit)
         {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            StartCoroutine(HitCooldownRoutine());
+            Hit();
+        }
+    }
 
-            RaycastHit hit; 
-            if(Physics.Raycast(ray, out hit , 4f))
+    IEnumerator HitCooldownRoutine()
+    {
+        canHit = false;
+        yield return new WaitForSeconds(hitCooldown);
+        canHit = true;
+    }
+
+    void Hit()
+    {
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
+        
+        if (Physics.Raycast(ray, out hit, 2f))
+        {
+            if (hit.collider.GetComponent<TreeHealth>())
             {
-                if(hit.collider.GetComponent<TreeHealth>())
-                {
-                    hit.collider.GetComponent<TreeHealth>().takeDamage(axeDamage, transform.root.gameObject);
-                    
-                }
+                hit.collider.GetComponent<TreeHealth>().takeDamage(axeDamage, transform.root.gameObject);
             }
         }
     }
