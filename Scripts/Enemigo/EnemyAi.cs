@@ -1,40 +1,39 @@
-
 using UnityEngine;
 using UnityEngine.AI;
 
 public class EnemyAiTutorial : MonoBehaviour
 {
     public NavMeshAgent agent;
-
-    public Transform Player;
-
+    public Transform player;
     public LayerMask whatIsGround, whatIsPlayer;
-
     public float health;
 
-    //Patroling
+    // Patroling
     public Vector3 walkPoint;
     bool walkPointSet;
     public float walkPointRange;
 
-    //Attacking
+    // Attacking
     public float timeBetweenAttacks;
     bool alreadyAttacked;
     public GameObject projectile;
+    public int projectileForceStrength; // This variable holds the force strength for the projectile
+    public float verticalForceStrength; // New variable to hold the vertical force strength for the projectile
+    public float spawnOffsetDistance = 1f; // Distance in front of the enemy to spawn the projectile
 
-    //States
+    // States
     public float sightRange, attackRange;
     public bool playerInSightRange, playerInAttackRange;
 
     private void Awake()
     {
-        Player = GameObject.Find("PlayerObj").transform;
+        player = GameObject.Find("PlayerObj").transform;
         agent = GetComponent<NavMeshAgent>();
     }
 
     private void Update()
     {
-        //Check for sight and attack range
+        // Check for sight and attack range
         playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
         playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
 
@@ -52,13 +51,14 @@ public class EnemyAiTutorial : MonoBehaviour
 
         Vector3 distanceToWalkPoint = transform.position - walkPoint;
 
-        //Walkpoint reached
+        // Walkpoint reached
         if (distanceToWalkPoint.magnitude < 1f)
             walkPointSet = false;
     }
+
     private void SearchWalkPoint()
     {
-        //Calculate random point in range
+        // Calculate random point in range
         float randomZ = Random.Range(-walkPointRange, walkPointRange);
         float randomX = Random.Range(-walkPointRange, walkPointRange);
 
@@ -70,28 +70,32 @@ public class EnemyAiTutorial : MonoBehaviour
 
     private void ChasePlayer()
     {
-        agent.SetDestination(Player.position);
+        agent.SetDestination(player.position);
     }
 
     private void AttackPlayer()
     {
-        //Make sure enemy doesn't move
+        // Make sure enemy doesn't move
         agent.SetDestination(transform.position);
 
-        transform.LookAt(Player);
+        transform.LookAt(player);
 
         if (!alreadyAttacked)
         {
-            ///Attack code here
-            Rigidbody rb = Instantiate(projectile, transform.position, Quaternion.identity).GetComponent<Rigidbody>();
-            rb.AddForce(transform.forward * 32f, ForceMode.Impulse);
-            rb.AddForce(transform.up * 8f, ForceMode.Impulse);
-            ///End of attack code
+            // Calculate the spawn position slightly in front of the enemy
+            Vector3 spawnPosition = transform.position + transform.forward * spawnOffsetDistance;
+
+            // Attack code here
+            Rigidbody rb = Instantiate(projectile, spawnPosition, Quaternion.identity).GetComponent<Rigidbody>();
+            rb.AddForce(transform.forward * projectileForceStrength, ForceMode.Impulse); // Use the projectileForceStrength variable here
+            rb.AddForce(transform.up * verticalForceStrength, ForceMode.Impulse); // Use the verticalForceStrength variable here
+            // End of attack code
 
             alreadyAttacked = true;
             Invoke(nameof(ResetAttack), timeBetweenAttacks);
         }
     }
+
     private void ResetAttack()
     {
         alreadyAttacked = false;
@@ -103,6 +107,7 @@ public class EnemyAiTutorial : MonoBehaviour
 
         if (health <= 0) Invoke(nameof(DestroyEnemy), 0.5f);
     }
+
     private void DestroyEnemy()
     {
         Destroy(gameObject);
