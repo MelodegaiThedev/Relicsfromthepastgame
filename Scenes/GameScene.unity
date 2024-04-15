@@ -5847,9 +5847,10 @@ GameObject:
   - component: {fileID: 882636096}
   - component: {fileID: 882636095}
   - component: {fileID: 882636097}
-  m_Layer: 0
-  m_Name: Enemigo
-  m_TagString: Untagged
+  - component: {fileID: 882636098}
+  m_Layer: 9
+  m_Name: Enemy
+  m_TagString: enemyCollider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5886,7 +5887,7 @@ CapsuleCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
   m_Height: 2
@@ -5955,20 +5956,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agent: {fileID: 882636096}
-  player: {fileID: 0}
+  player: {fileID: 1118122508}
   whatIsGround:
     serializedVersion: 2
     m_Bits: 256
   whatIsPlayer:
     serializedVersion: 2
     m_Bits: 128
-  health: 120
+  health: 10
   walkPoint: {x: 0, y: 0, z: 0}
   walkPointRange: 5
-  timeBetweenAttacks: 3
-  projectile: {fileID: 3075732939992336806, guid: 0ac9eeecd9dcbd44c83391cbd61f44a4, type: 3}
+  timeBetweenAttacks: 0.5
+  projectile: {fileID: 1374965697811873522, guid: 0580a2a4dbbe8494c9f865a09adc65ed, type: 3}
+  projectileForceStrength: 19
+  verticalForceStrength: 2
+  spawnOffsetDistance: 1
   sightRange: 15
-  attackRange: 10
+  attackRange: 8
   playerInSightRange: 0
   playerInAttackRange: 0
 --- !u!195 &882636096
@@ -6005,11 +6009,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b0be7f8384c8d442bb233abc4ac21f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentHealth: 15
+  currentHealth: 10
   itemDrops:
-  - ItemToDrop: {fileID: 6536512925546615095, guid: b36eba1d167469a4b875e6a7b0a719a8, type: 3}
+  - ItemToDrop: {fileID: 919132149155446097, guid: 7ddbc2ab7b2561e4ca34651e2b9408e4, type: 3}
     minQuantityToDrop: 1
     maxQuantityToDrop: 1
+--- !u!114 &882636098
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 882636090}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be0e0c9883557f54cb4ae69997df09ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageAmount: 10
 --- !u!1 &912222831
 GameObject:
   m_ObjectHideFlags: 0
@@ -7601,7 +7618,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 30
-  currentHealth: 0
   healthText: {fileID: 1084342444}
 --- !u!1 &1124851180
 GameObject:
