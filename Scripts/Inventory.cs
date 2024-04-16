@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -147,6 +146,21 @@ public class Inventory : MonoBehaviour
             itemToAdd.currentQuantity = leftoverQuantity;
         }
     }
+
+    public bool HasItem(GameObject itemPrefab)
+{
+    string itemName = itemPrefab.name; // Get the name of the item prefab
+    foreach (Slot slot in allInventorySlots)
+    {
+        Item item = slot.getItem();
+        if (item != null && item.gameObject.name == itemName)
+        {
+            return true;
+        }
+    }
+    return false;
+}
+
 
     private void toggleInventory(bool enable)
     {

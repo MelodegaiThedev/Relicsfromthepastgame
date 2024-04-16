@@ -5966,7 +5966,7 @@ MonoBehaviour:
   health: 10
   walkPoint: {x: 0, y: 0, z: 0}
   walkPointRange: 5
-  timeBetweenAttacks: 0.5
+  timeBetweenAttacks: 1.5
   projectile: {fileID: 1374965697811873522, guid: 0580a2a4dbbe8494c9f865a09adc65ed, type: 3}
   projectileForceStrength: 19
   verticalForceStrength: 2
@@ -6011,7 +6011,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentHealth: 10
   itemDrops:
-  - ItemToDrop: {fileID: 919132149155446097, guid: 7ddbc2ab7b2561e4ca34651e2b9408e4, type: 3}
+  - ItemToDrop: {fileID: 5442421038407810013, guid: 16b8efe58fb37a247861c3056711af4d, type: 3}
     minQuantityToDrop: 1
     maxQuantityToDrop: 1
 --- !u!114 &882636098
