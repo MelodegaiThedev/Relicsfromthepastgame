@@ -2,35 +2,31 @@ using UnityEngine;
 
 public class Interaction : MonoBehaviour
 {
-    public KeyCode interactionKey = KeyCode.F; // Change to F for interaction
-    public GameObject requiredItemPrefab; // Reference to the required item prefab
-    public Inventory playerInventory; // Reference to the player's inventory
+    public KeyCode interactionKey = KeyCode.E;
+    public Inventory playerInventory;
 
-    public void Update()
+    void Update()
     {
         if (Input.GetKeyDown(interactionKey))
         {
-            if (playerInventory.HasItem(requiredItemPrefab))
+            if (playerInventory.HasItemWithTag("KeyItem"))
             {
                 PerformInteraction();
             }
             else
             {
-                Debug.Log("You need the required item to interact with this object.");
+                Debug.Log("You need the KeyItem to interact with this object.");
             }
         }
     }
 
     void PerformInteraction()
     {
-        // Implement your interaction logic here
-        Debug.Log("Interaction performed!");
-
-        // Destroy the MainGate object
-        GameObject mainGate = GameObject.FindWithTag("MainGate"); // Assuming the gate has a tag "MainGate"
+        GameObject mainGate = GameObject.FindWithTag("MainGate");
         if (mainGate != null)
         {
             Destroy(mainGate);
+            Debug.Log("Interaction performed!");
         }
     }
 }

@@ -147,20 +147,23 @@ public class Inventory : MonoBehaviour
         }
     }
 
-    public bool HasItem(GameObject itemPrefab)
-{
-    string itemName = itemPrefab.name; // Get the name of the item prefab
-    foreach (Slot slot in allInventorySlots)
+    public bool HasItemWithTag(string tag)
     {
-        Item item = slot.getItem();
-        if (item != null && item.gameObject.name == itemName)
+        foreach (Slot slot in allInventorySlots)
         {
-            return true;
+            Item item = slot.getItem();
+            if (item != null && item.gameObject.CompareTag(tag))
+            {
+                return true;
+            }
         }
+        return false;
     }
-    return false;
-}
 
+    public List<Slot> GetAllInventorySlots()
+    {
+        return allInventorySlots;
+    }
 
     private void toggleInventory(bool enable)
     {

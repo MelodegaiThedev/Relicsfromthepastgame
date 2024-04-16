@@ -29,7 +29,7 @@ public class AxeItem : MonoBehaviour
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
         
-        if (Physics.Raycast(ray, out hit, 2f))
+        if (Physics.Raycast(ray, out hit, 5f))
         {
             if (hit.collider.GetComponent<TreeHealth>())
             {
