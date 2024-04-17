@@ -1247,7 +1247,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactionKey: 102
-  stickPrefab: {fileID: 6536512925546615095, guid: b36eba1d167469a4b875e6a7b0a719a8, type: 3}
   playerInventory: {fileID: 1118122510}
 --- !u!1 &189233750
 GameObject:
@@ -2109,13 +2108,13 @@ Transform:
   m_GameObject: {fileID: 300000327}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 15.248955, y: 0.064745665, z: -28.716312}
+  m_LocalPosition: {x: 54.338955, y: -1.0252544, z: 20.550686}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1752744634}
   - {fileID: 1187775486}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 674173299}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &303197089
 GameObject:
@@ -4371,6 +4370,7 @@ Transform:
   - {fileID: 803852281}
   - {fileID: 973299430}
   - {fileID: 185112677}
+  - {fileID: 300000328}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &674790402
@@ -7201,8 +7201,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.000030518, y: 401.9}
-  m_SizeDelta: {x: 194.778, y: 59.2869}
+  m_AnchoredPosition: {x: 167, y: 357}
+  m_SizeDelta: {x: 529.2087, y: 194.7005}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1087444279
 GameObject:
@@ -7632,7 +7632,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04e85dd8989cd7c499b1068bea1be192, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 30
+  maxHealth: 100
   healthText: {fileID: 1084342444}
 --- !u!1 &1124851180
 GameObject:
@@ -16994,4 +16994,3 @@ SceneRoots:
   - {fileID: 1547242144}
   - {fileID: 2017181244}
   - {fileID: 674173299}
-  - {fileID: 300000328}

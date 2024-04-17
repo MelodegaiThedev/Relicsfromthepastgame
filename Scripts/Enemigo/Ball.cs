@@ -3,7 +3,7 @@ using UnityEngine;
 public class Ball : MonoBehaviour
 {
     public int damageAmount = 10;
-    public float destroyDelay = 1f; // Delay before destroying the ball
+    public float destroyDelay = 0.2f; // Delay before destroying the ball
 
     // Reference to the enemy collider
     public Collider enemyCollider;
