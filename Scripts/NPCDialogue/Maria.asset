@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f190ca0c0e736b74a955ea241c43a344, type: 3}
+  m_Name: Maria
+  m_EditorClassIdentifier: 
+  nameNPC: Maria
+  dialogue:
+  - Oh hey i didn't see you there
+  - I am here for a job interview
+  - See you arround.
+  playerDialogue:
+  - Why are you here?
+  - Catch you later.

@@ -8,6 +8,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 879480021111591688, guid: 36deee1b6f7a1d342a45979a889cae88, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1206973717146658990, guid: 36deee1b6f7a1d342a45979a889cae88, type: 3}
       propertyPath: m_Name
       value: Bola Variant
